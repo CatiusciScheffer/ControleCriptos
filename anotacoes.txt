@@ -1,0 +1,9 @@
+CRYPTOS_FLASK
+    |--criptoControl
+        |__init__.py  -- problema deve ser que o caminho aqui para o banco não é sqlite:///instance/crypto_data.db deve ser algo sqlite:///..instance/crypto_data.db
+    |--env
+    |--instance
+        |--crypto_data.db
+    |main.py
+  
+
