@@ -1,8 +1,9 @@
 <h2>Gerenciador de Criptomoedas</h2> 
 <p>Este é um aplicativo de gerenciamento de criptomoedas desenvolvido em Flask, projetado para ajudar usuários a rastrear suas transações, saldos e carteiras. Ele também fornece suporte para taxas e preços dinâmicos de criptomoedas. Ideal para entusiastas de cripto e traders!</p>
 
-🚀 Funcionalidades
+<h4>🚀 Funcionalidades</h4>
 Gerenciamento de carteiras: Crie, edite e exclua carteiras de criptomoedas.
+
 Controle de transações:
 Compra
 Venda
@@ -13,14 +14,16 @@ Relatórios detalhados: Exibição de histórico de transações com cálculos d
 Verificação de saldo: Validações automáticas para evitar transações inválidas.
 Reversão de transações: Suporte para desfazer operações anteriores.
 Análises de DCA, Lucro e Prejuízo das trasações realizadas
-🛠️ Tecnologias Utilizadas
+
+<h4>🛠️ Tecnologias Utilizadas</h4>
 Backend: Flask, SQLAlchemy
 Frontend: HTML, CSS, Bootstrap
 Banco de Dados: SQLite
 Outras bibliotecas:
 Flask-WTF (validação de formulários)
 WTForms (criação de formulários dinâmicos)
-🗂️ Estrutura do Projeto
+
+<h4>🗂️ Estrutura do Projeto</h4>
 CRYPTOS_FLASK
     |--criptoControl
         |--routes
@@ -68,10 +71,10 @@ CRYPTOS_FLASK
     |main.py
     |requirements.txt
 
-⚙️ Instalação e Execução
+<h4>⚙️ Instalação e Execução</h4>
 Clone o repositório:
 
-git clone [https://github.com/seu-usuario/crypto-manager.git](https://github.com/CatiusciScheffer/ControleCriptos)
+git clone https://github.com/CatiusciScheffer/ControleCriptos
 cd crypto-manager
 Crie um ambiente virtual e instale as dependências:
 
@@ -88,14 +91,14 @@ Execute o aplicativo:
 flask run
 Acesse no navegador: http://127.0.0.1:5000
 
-📝 Contribuição
+<h4>📝 Contribuição</h4>
 Contribuições são bem-vindas! Para contribuir:
 
 Abra um Pull Request.
-📜 Licença
+<h4>📜 Licença</h4>
 Este projeto está licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.
 
-📬 Contato
+<h4>📬 Contato</h4>
 Se tiver dúvidas ou sugestões, entre em contato:
 📧 cpcscheffer@outlook.com
 🌐 Projeto hospedado: https://controlecripto-18636635ed0d.herokuapp.com/ (utilize para login:  catiusci.ctadigital@gmail.com / senha Chefa220408#)
