@@ -18,10 +18,11 @@ CRYPTOS_FLASK
             |auth
                 |--login.html
             |operacoes
-                |--add_transactions.html
-                |--cryptos.html
                 |--add_crypto.html
+                |--add_transactions.html
                 |--add_wallet.html
+                |--cryptos.html
+                |--modal_confirm_delete.html
                 |--transactions.html
                 |--wallets.html
             |views_databases
@@ -34,7 +35,6 @@ CRYPTOS_FLASK
                 |--wallet_summary.html
             |--index.html
             |--navibar.html
-            |--navert.html
         |__init__.py
         |api.py
         |forms.py
