@@ -6,7 +6,7 @@
   <caption>
     <div class="mt-4 mb-4 d-flex justify-content-between align-items-center">
       <h4>Carteiras Cadastradas</h4>
-      <!-- Botão de Filtro -->
+      <!-- Botão para adicionar uma nova carteira -->
       <a href="{{ url_for('crypto_wallet.add_wallet') }}" class="btn btn-secondary">Adicionar Carteira</a>
     </div>
   </caption>
@@ -22,23 +22,30 @@
     <tbody>
       {% for wallet in wallets %}
       <tr>
-        <!-- Use as propriedades dos objetos Wallet -->
         <td>{{ wallet.wallet_name }}</td>
         <td>{{ wallet.wallet_network }}</td>
         <td>
-          <!-- Formulário para atualizar o status da carteira -->
-          <form method="POST" action="{{ url_for('crypto_wallet.delete_wallet') }}" style="display:inline;">
-
-            <!-- Campo oculto para passar o ID da carteira -->
-            <input type="hidden" name="wallet_id" value="{{ wallet.wallet_id }}">
-            <!-- Botão de atualizar status -->
-            <button type="submit" class="btn btn-danger btn-sm">Excluir/Inativar</button>
-          </form>
+          <!-- Botão que abre o modal de confirmação -->
+          <button 
+            type="button" 
+            class="btn btn-danger btn-sm" 
+            data-bs-toggle="modal" 
+            data-bs-target="#confirmDeleteModal" 
+            data_id="{{ wallet.wallet_id }}">
+            Excluir/Inativar
+          </button>
         </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
+
+<!-- Defina as variáveis antes de incluir o modal -->
+{% set modal_form_action = url_for('crypto_wallet.delete_wallet') %}
+{% set modal_hidden_field = 'wallet_id' %}
+
+<!-- Incluindo o Modal com as variáveis definidas -->
+{% include 'operacoes/modal_confirm_delete.html' %}
 
 {% endblock %}

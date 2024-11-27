@@ -118,13 +118,15 @@
         {% endif %}
       </td>
       <td>
-        <!-- Formulário para excluir a transação -->
-        <form method="POST" action="{{ url_for('transaction.delete_transaction') }}" style="display: inline">
-          <input type="hidden" name="transactions_id" value="{{ transaction.transactions_id }}" />
-          <button type="submit" class="btn btn-danger btn-sm">
-            Excluir
-          </button>
-        </form>
+        <!-- Botão que abre o modal de confirmação -->
+        <button 
+        type="button" 
+        class="btn btn-danger btn-sm" 
+        data-bs-toggle="modal" 
+        data-bs-target="#confirmDeleteModal" 
+        data_id="{{ transaction.transactions_id }}">
+        Excluir/Inativar
+      </button>
       </td>
     </tr>
     {% endfor %}
@@ -161,6 +163,14 @@
   </ul>
 </nav>
 </div>
+
+<!-- Defina as variáveis antes de incluir o modal -->
+{% set modal_form_action = url_for('transaction.delete_transaction') %}
+{% set modal_hidden_field = 'transactions_id' %}
+
+<!-- Incluindo o Modal com as variáveis definidas -->
+{% include 'operacoes/modal_confirm_delete.html' %}
+
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/scripts_consulltaTransacoes.js') }}" defer></script>
 {% endblock %} {% endblock %}
