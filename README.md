@@ -17,19 +17,29 @@ Adição de saldo
 Atualização de preços: Integração com dados de preços de criptomoedas em tempo real, necessário solicitar a atualização clicando no botão específico.
 
 Relatórios detalhados: Exibição de histórico de transações com cálculos de taxas e totais.
+
 Verificação de saldo: Validações automáticas para evitar transações inválidas.
+
 Reversão de transações: Suporte para desfazer operações anteriores.
-Análises de DCA, Lucro e Prejuízo das trasações realizadas
+
+Análises de DCA, Lucro e Prejuízo das trasações realizadas.
 
 <h4>🛠️ Tecnologias Utilizadas</h4>
+
 Backend: Flask, SQLAlchemy
+
 Frontend: HTML, CSS, Bootstrap
+
 Banco de Dados: SQLite
+
 Outras bibliotecas:
+
 Flask-WTF (validação de formulários)
+
 WTForms (criação de formulários dinâmicos)
 
 <h4>🗂️ Estrutura do Projeto</h4>
+```php
 CRYPTOS_FLASK
     |--criptoControl
         |--routes
@@ -76,6 +86,7 @@ CRYPTOS_FLASK
         |--crypto_data.db
     |main.py
     |requirements.txt
+```
 
 <h4>⚙️ Instalação e Execução</h4>
 Clone o repositório:
