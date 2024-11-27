@@ -39,54 +39,53 @@ Flask-WTF (validação de formulários)
 WTForms (criação de formulários dinâmicos)
 
 <h4>🗂️ Estrutura do Projeto</h4>
-```php
 CRYPTOS_FLASK
-    |--criptoControl
-        |--routes
-            |__init__.py
-            |auth_routes.py
-            |crud_crypto_wallet.py
-            |main_routes.py
-            |transactions_routes.py
-            |update_price.py
-            |views_databases.py
-        |--static
-            |--css
-               style.css 
-            |--js
-                |--scripts_consulltaTransacoes.js
-                |--scripts_transacoes.js
-        |--templates
-            |auth
-                |--login.html
-            |operacoes
-                |--add_crypto.html
-                |--add_transactions.html
-                |--add_wallet.html
-                |--cryptos.html
-                |--modal_confirm_delete.html
-                |--transactions.html
-                |--wallets.html
-            |views_databases
-                |--crypto_DCA.html
-                |--crypto_lucroXprejuizo.html
-                |--filtros_transacoes.html
-                |--prices.html
-                |--transacoes_filtradas.html
-                |--wallet_ballances.html
-                |--wallet_summary.html
-            |--index.html
-            |--navibar.html
-        |__init__.py
-        |api.py
-        |forms.py
-        |models.py
-    |--env
-    |--instance
-        |--crypto_data.db
-    |main.py
-    |requirements.txt
-```
+    ├── criptoControl
+    │   ├── routes
+    │   │   ├── __init__.py
+    │   │   ├── auth_routes.py
+    │   │   ├── crud_crypto_wallet.py
+    │   │   ├── main_routes.py
+    │   │   ├── transactions_routes.py
+    │   │   ├── update_price.py
+    │   │   └── views_databases.py
+    │   ├── static
+    │   │   ├── css
+    │   │   │   └── style.css
+    │   │   ├── js
+    │   │   │   ├── scripts_consulltaTransacoes.js
+    │   │   │   └── scripts_transacoes.js
+    │   ├── templates
+    │   │   ├── auth
+    │   │   │   └── login.html
+    │   │   ├── operacoes
+    │   │   │   ├── add_crypto.html
+    │   │   │   ├── add_transactions.html
+    │   │   │   ├── add_wallet.html
+    │   │   │   ├── cryptos.html
+    │   │   │   ├── modal_confirm_delete.html
+    │   │   │   ├── transactions.html
+    │   │   │   └── wallets.html
+    │   │   ├── views_databases
+    │   │   │   ├── crypto_DCA.html
+    │   │   │   ├── crypto_lucroXprejuizo.html
+    │   │   │   ├── filtros_transacoes.html
+    │   │   │   ├── prices.html
+    │   │   │   ├── transacoes_filtradas.html
+    │   │   │   ├── wallet_ballances.html
+    │   │   │   └── wallet_summary.html
+    │   │   ├── index.html
+    │   │   └── navibar.html
+    │   ├── __init__.py
+    │   ├── api.py
+    │   ├── forms.py
+    │   └── models.py
+    ├── env
+    ├── instance
+    │   └── crypto_data.db
+    ├── main.py
+    └── requirements.txt
+
 
 <h4>⚙️ Instalação e Execução</h4>
 Clone o repositório:
@@ -116,6 +115,10 @@ Abra um Pull Request.
 Este projeto está licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.
 
 <h4>📬 Contato</h4>
+
 Se tiver dúvidas ou sugestões, entre em contato:
+
 📧 cpcscheffer@outlook.com
-🌐 Projeto hospedado: https://controlecripto-18636635ed0d.herokuapp.com/ (utilize para login:  catiusci.ctadigital@gmail.com / senha Chefa220408#)
+
+🌐 Projeto hospedado: https://controlecripto-18636635ed0d.herokuapp.com/ (utilize para login: catiusci.ctadigital@gmail.com / senha Chefa220408#)
+
