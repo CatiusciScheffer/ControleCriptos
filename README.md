@@ -1,5 +1,5 @@
-Gerenciador de Criptomoedas 🪙
-Este é um aplicativo de gerenciamento de criptomoedas desenvolvido em Flask, projetado para ajudar usuários a rastrear suas transações, saldos e carteiras. Ele também fornece suporte para taxas e preços dinâmicos de criptomoedas. Ideal para entusiastas de cripto e traders!
+<h2>Gerenciador de Criptomoedas</h2> 
+<p>Este é um aplicativo de gerenciamento de criptomoedas desenvolvido em Flask, projetado para ajudar usuários a rastrear suas transações, saldos e carteiras. Ele também fornece suporte para taxas e preços dinâmicos de criptomoedas. Ideal para entusiastas de cripto e traders!</p>
 
 🚀 Funcionalidades
 Gerenciamento de carteiras: Crie, edite e exclua carteiras de criptomoedas.
@@ -71,7 +71,7 @@ CRYPTOS_FLASK
 ⚙️ Instalação e Execução
 Clone o repositório:
 
-git clone https://github.com/seu-usuario/crypto-manager.git
+git clone [https://github.com/seu-usuario/crypto-manager.git](https://github.com/CatiusciScheffer/ControleCriptos)
 cd crypto-manager
 Crie um ambiente virtual e instale as dependências:
 
