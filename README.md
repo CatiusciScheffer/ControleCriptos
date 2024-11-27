@@ -1,7 +1,7 @@
 <h2>Gerenciador de Criptomoedas</h2> 
 <p>Este é um aplicativo de gerenciamento de criptomoedas desenvolvido em Flask, projetado para ajudar usuários a rastrear suas transações, saldos e carteiras. Ele também fornece suporte para taxas e preços dinâmicos de criptomoedas. Ideal para entusiastas de cripto e traders!</p>
 
-<h4>🚀 Funcionalidades</h4>
+<h3>🚀 Funcionalidades</h3>
 Gerenciamento de carteiras: Crie, edite e exclua carteiras de criptomoedas.
 
 Controle de transações:
@@ -24,7 +24,7 @@ Reversão de transações: Suporte para desfazer operações anteriores.
 
 Análises de DCA, Lucro e Prejuízo das trasações realizadas.
 
-<h4>🛠️ Tecnologias Utilizadas</h4>
+<h3>🛠️ Tecnologias Utilizadas</h3>
 
 Backend: Flask, SQLAlchemy
 
@@ -38,7 +38,7 @@ Flask-WTF (validação de formulários)
 
 WTForms (criação de formulários dinâmicos)
 
-<h4>🗂️ Estrutura do Projeto</h4>
+<h3>🗂️ Estrutura do Projeto</h3>
 
 CRYPTOS_FLASK
 
@@ -89,7 +89,7 @@ CRYPTOS_FLASK
     └── requirements.txt
 
 
-<h4>⚙️ Instalação e Execução</h4>
+<h3>⚙️ Instalação e Execução</h3>
 Clone o repositório:
 
 git clone https://github.com/CatiusciScheffer/ControleCriptos
@@ -109,14 +109,14 @@ Execute o aplicativo:
 flask run
 Acesse no navegador: http://127.0.0.1:5000
 
-<h4>📝 Contribuição</h4>
+<h3>📝 Contribuição</h3>
 Contribuições são bem-vindas! Para contribuir:
 
 Abra um Pull Request.
-<h4>📜 Licença</h4>
+<h3>📜 Licença</h3>
 Este projeto está licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.
 
-<h4>📬 Contato</h4>
+<h3>📬 Contato</h3>
 
 Se tiver dúvidas ou sugestões, entre em contato:
 
