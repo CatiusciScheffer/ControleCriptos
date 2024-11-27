@@ -2,6 +2,7 @@
 <p>Este é um aplicativo de gerenciamento de criptomoedas desenvolvido em Flask, projetado para ajudar usuários a rastrear suas transações, saldos e carteiras. Ele também fornece suporte para taxas e preços dinâmicos de criptomoedas. Ideal para entusiastas de cripto e traders!</p>
 
 <h3>🚀 Funcionalidades</h3>
+<p>
     Gerenciamento de carteiras: Crie, edite e exclua carteiras de criptomoedas.
 
     Controle de transações:
@@ -23,7 +24,7 @@
     Reversão de transações: Suporte para desfazer operações anteriores.
     
     Análises de DCA, Lucro e Prejuízo das trasações realizadas.
-
+</p>
 <h3>🛠️ Tecnologias Utilizadas</h3>
 
 Backend: Flask, SQLAlchemy
