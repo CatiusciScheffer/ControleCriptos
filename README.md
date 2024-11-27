@@ -40,8 +40,9 @@ WTForms (criação de formulários dinâmicos)
 
 <h4>🗂️ Estrutura do Projeto</h4>
 CRYPTOS_FLASK
-    ├── criptoControl
-    │   ├── routes
+    ├── criptoControl    
+    │   ├── routes 
+    
     │   │   ├── __init__.py
     │   │   ├── auth_routes.py
     │   │   ├── crud_crypto_wallet.py
