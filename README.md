@@ -5,11 +5,17 @@
 Gerenciamento de carteiras: Crie, edite e exclua carteiras de criptomoedas.
 
 Controle de transações:
+
 Compra
+
 Venda
+
 Transferência
+
 Adição de saldo
+
 Atualização de preços: Integração com dados de preços de criptomoedas em tempo real, necessário solicitar a atualização clicando no botão específico.
+
 Relatórios detalhados: Exibição de histórico de transações com cálculos de taxas e totais.
 Verificação de saldo: Validações automáticas para evitar transações inválidas.
 Reversão de transações: Suporte para desfazer operações anteriores.
