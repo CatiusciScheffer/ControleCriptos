@@ -1,0 +1,25 @@
+<style>
+  /* Estilo geral para os links da barra de navegação */
+  .nav-link {
+    color: gray; /* Define o texto como cinza */
+    font-size: 1rem; /* Tamanho padrão dos links */
+    font-weight: normal; /* Define o peso padrão */
+  }
+
+  /* Remove o efeito de cor azul quando o link está ativo */
+  .nav-link.active {
+    color: gray !important;
+  }
+
+  /* Estilo especial para o link "Home" */
+  .nav-link.home-link {
+    font-size: 1.25rem; /* Aumenta o tamanho do texto */
+    font-weight: bold; /* Define o texto como negrito */
+  }
+
+  /* Adiciona um hover para destacar o link quando o cursor passar por cima */
+  .nav-link:hover {
+    color: darkgray; /* Cor mais escura no hover */
+    text-decoration: underline; /* Adiciona um sublinhado no hover */
+  }
+</style>
