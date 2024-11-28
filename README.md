@@ -105,7 +105,7 @@ CRYPTOS_FLASK/
    git clone https://github.com/CatiusciScheffer/ControleCriptos
   
 ## 🌐 **Demonstração Online**
-Acesse o projeto hospedado em: [Adicione aqui o link para o seu perfil no LinkedIn, se desejar.](https://controlecripto-18636635ed0d.herokuapp.com/)
+Acesse o projeto hospedado em: [https://controlecripto-18636635ed0d.herokuapp.com/]
 Controle Criptos
 
 Login para teste:
