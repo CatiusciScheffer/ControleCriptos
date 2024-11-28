@@ -10,8 +10,8 @@
   <body>
     <!--  Mensagem de erro caso login falhe  -->
     <div class="container">
-      {% with messages = get_flashed_messages(with_categories=True) %} {%
-      if messages %} {% for category, message in messages %}
+      {% with messages = get_flashed_messages(with_categories=True) %} {% if
+      messages %} {% for category, message in messages %}
       <div class="alert {{ category }}">{{ message }}</div>
       {% endfor %} {% endif %} {% endwith %}
     </div>
@@ -34,15 +34,32 @@
               formLogin.password_hash(class="form-control") }}
             </div>
 
-            <div class="form-group mt-4 mb-5">
+            <div class="form-check mb-3">
+              {{ formLogin.remember_me(class="form-check-input") }} {{
+              formLogin.remember_me.label(class="form-check-label") }}
+            </div>
+
+            <div class="form-group mt-4">
               {{ formLogin.btn_user_enter(class="btn btn-primary w-100") }}
+            </div>
+            <!--Criar a funcionalidade de esqueci a senha-->
+            <div class="form-group text-center mt-3">
+              <a
+                href="{{ url_for('auth.forgot_password') }}"
+                class="text-decoration-none btn btn-link text-secondary"
+                ><!--{{ formLogin.release_cta.label.text }}--></a
+              >
+            </div>
+
+            <div class="form-group text-center mt-3">
+              <a href="{{ url_for('auth.create_account') }}" class="text-decoration-none btn btn-link text-secondary fw-bold mb-5">
+                {{ formLogin.btn_user_create.label.text }}
+            </a>              
             </div>
           </form>
         </div>
       </div>
     </div>
-    {% block scripts %}
-      {{ bootstrap.load_js() }}
-    {% endblock %}
+    {% block scripts %} {{ bootstrap.load_js() }} {% endblock %}
   </body>
 </html>

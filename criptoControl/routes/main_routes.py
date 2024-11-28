@@ -17,10 +17,21 @@ def create_session():
 @main_bp.route('/index')
 @login_required  
 def index():
+    """
+    Esta função lida com a página principal do aplicativo, exibindo informações de transações, carteiras e 
+    criptomoedas ao usuário. Ela recupera dados do banco de dados usando consultas SQLAlchemy e renderiza o 
+    modelo HTML correspondente.
+
+    Parâmetros:
+    Nenhum
+
+    Retorna:
+    render_template: Uma resposta do Flask contendo o modelo HTML renderizado com os dados recuperados.
+    """
     formTransactions = TransactionsForm()
     formAddWallet = AddWalletForm()
     formAddCrypto = AddCryptoForm()
-    
+
     # Inicializa a sessão como None
     session = None
     cons_transactions = []
@@ -29,7 +40,7 @@ def index():
 
     try:
         session = create_session()
-        # Busca as informações no banco
+        # Busca dados do banco de dados
         cons_transactions = session.query(Transaction).all()
         cons_wallets = session.query(Wallet).filter(
             Wallet.wallet_status == 'N',
@@ -37,7 +48,7 @@ def index():
         ).all()
         cons_crypto = session.query(Cryptocurrency).filter(Cryptocurrency.crypto_status == 'N').all()
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"Ocorreu um erro: {e}")
     finally:
         if session:
             session.close()
@@ -53,9 +64,22 @@ def index():
     )
 
 
+
+
 @main_bp.route('/grafico')
 @login_required
 def grafico():
+    """
+    Esta função gera um gráfico de barras mostrando o valor atual das criptomoedas em cada carteira.
+    Ela recupera os dados necessários do banco de dados, processa-os e cria o gráfico usando matplotlib.
+    O gráfico é então salvo em um buffer de memória e retornado como uma imagem PNG.
+
+    Parâmetros:
+    Nenhum
+
+    Retorna:
+    send_file: Uma resposta do Flask contendo o gráfico gerado como uma imagem PNG.
+    """
     # Subconsulta para obter o preço mais recente
     latest_prices_subquery = (
         db.session.query(
@@ -87,7 +111,7 @@ def grafico():
         .limit(15)
         .all()
     )
-    
+
     # Preparar dados para o gráfico
     data = {}
     for row in query:
@@ -101,17 +125,19 @@ def grafico():
     plt.figure(figsize=(10, 6))
     for wallet_name, values in data.items():
         plt.bar(values['x'], values['y'], label=wallet_name)
-    
+
     plt.xlabel('Criptomoeda')
     plt.ylabel('Valor (R$)')
     plt.title('Valor das Criptomoedas por Carteira')
     plt.legend(title='Carteira')
     plt.xticks(rotation=45)
     plt.tight_layout()
-    
+
     # Salvar o gráfico em um buffer de memória
     img = io.BytesIO()
     plt.savefig(img, format='png')
     img.seek(0)
-    
+
     return send_file(img, mimetype='image/png')
+
+

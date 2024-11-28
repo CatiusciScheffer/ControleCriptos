@@ -17,6 +17,7 @@ CRYPTOS_FLASK
         |--templates
             |auth
                 |--login.html
+                |--register.html
             |operacoes
                 |--add_crypto.html
                 |--add_transactions.html

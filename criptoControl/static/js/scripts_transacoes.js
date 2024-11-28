@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const section_crypto_received = document.getElementById('section_crypto_received');
     const section_crypto_payment = document.getElementById('section_crypto_payment');
 
+    // Função para alternar a visibilidade das seções de carteira
     function toggleWalletContainers() {
         const selectedValue = transaction_type.value;
 
@@ -133,7 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
     carteriaSaidaSelect.addEventListener('change', function() {
         document.getElementById('hidden_payment_wallet_id').value = this.value;
     });
-
+    
+    // Atualiza os campos ocultos com base na seleção das carteiras de recebimento
     const carteriaRecebimentoSelect = document.getElementById('receiving_wallet');
     carteriaRecebimentoSelect.addEventListener('change', function() {
         document.getElementById('hidden_carteriaRecebimentoTransacao_id').value = this.value;

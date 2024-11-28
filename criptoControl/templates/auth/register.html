@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    {{ bootstrap.load_css() }}
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="card px-4 mx-auto" style="max-width: 500px">
+        <h1 class="mt-4 text-center">Cadastro</h1>
+        <div class="container">
+          <form method="POST" action="{{ url_for('auth.create_account') }}">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group mb-3">
+              {{ form.username.label(class="form-label") }}
+              {{ form.username(class="form-control") }}
+            </div>
+
+            <div class="form-group mb-3">
+              {{ form.email.label(class="form-label") }}
+              {{ form.email(class="form-control") }}
+            </div>
+
+            <div class="form-group mb-3">
+              {{ form.password.label(class="form-label") }}
+              {{ form.password(class="form-control") }}
+            </div>
+
+            <div class="form-group mb-3">
+              {{ form.confirm_password.label(class="form-label") }}
+              {{ form.confirm_password(class="form-control") }}
+            </div>
+
+            <div class="form-group mt-4 mb-5">
+              {{ form.submit(class="btn btn-primary w-100") }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {{ bootstrap.load_js() }}
+  </body>
+</html>

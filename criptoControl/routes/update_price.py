@@ -20,18 +20,27 @@ def create_session():
 #Atualiza os preços das cryptos cadastradas pela API
 @update_price_bp.route('/update_prices', methods=['POST'])
 def update_prices():
+    """
+    Esta função atualiza os preços das criptomoedas cadastradas no banco de dados consultando uma API.
+
+    Parâmetros:
+    Nenhum
+
+    Retorna:
+    redirect: Redireciona para a visualização 'prices' após a atualização dos preços.
+    """
     session = None
     try:
         COINMARKETCAP_API_KEY = os.getenv('COINMARKETCAP_API_KEY')
         session = create_session()
-            
-        # Obter todos os símbolos das criptomoedas com status 'N'
+
+        # Obter os símbolos das criptomoedas com status 'N'
         cryptos = session.query(Cryptocurrency).filter_by(crypto_status='N').all()
         symbols = [crypto.crypto_symbol for crypto in cryptos if crypto.crypto_symbol.isalnum()]
-            
+
         # Consultar a API uma vez para todos os símbolos
         prices = get_crypto_payment_price(COINMARKETCAP_API_KEY, symbols)
-            
+
         # Atualizar o banco de dados com os preços obtidos
         for crypto in cryptos:
             symbol = crypto.crypto_symbol
@@ -43,12 +52,13 @@ def update_prices():
                 flash(f'Preço da criptomoeda {symbol} atualizado com sucesso', 'alert-success')
             else:
                 flash(f'Preço para a criptomoeda {symbol} não encontrado', 'alert-warning')
-            
+
         session.commit()
-    
+
     except Exception as e:
         flash(f'Erro ao tentar atualizar os preços: {e}', 'alert-danger')
         if session:
             session.rollback()
-    
+
     return redirect(url_for('views.prices'))
+
