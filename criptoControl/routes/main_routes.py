@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, send_file
 from sqlalchemy import func
+from sqlalchemy.orm import sessionmaker
 from criptoControl.forms import TransactionsForm, AddWalletForm, AddCryptoForm
 from criptoControl.models import db, Wallet, Cryptocurrency, WalletBalance, Transaction, Price, User
 from flask_login import current_user, login_required
