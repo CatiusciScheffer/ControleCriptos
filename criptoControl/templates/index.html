@@ -12,17 +12,16 @@ A página é responsiva e utiliza classes do Bootstrap para estilização. O rod
   <!-- Incluindo o arquivo CSS externo -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-
   {{ bootstrap.load_css() }}
   {{ bootstrap.load_js() }}
   {% block head %}{% endblock %}
 </head>
 
-<body class="d-flex flex-column" style="height: 100vh;">
-  <div class="container-fluid" style="height: 100%;">
-    <div class="row" style="height: 100%;">
+<body class="d-flex flex-column" style="overflow-x: hidden;">
+  <div class="container-fluid" style="flex: 1;">
+    <div class="row">
       <!-- Barra de navegação à esquerda -->
-      <div class="col-3 bg-light p-0" style="height: 100vh; overflow-y: auto;">
+      <div class="col-3 bg-light p-0" style="overflow-y: auto;">
         {% include 'navibar.html' %}
       </div>
 
@@ -30,11 +29,11 @@ A página é responsiva e utiliza classes do Bootstrap para estilização. O rod
       <div class="col-9 mt-5">
         <div class="container">
           {% with messages = get_flashed_messages(with_categories=True) %}
-          {% if messages %}
-          {% for category, message in messages %}
-          <div class="alert {{ category|e }}">{{ message|e }}</div> <!-- Escapando mensagens -->
-          {% endfor %}
-          {% endif %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert {{ category|e }}">{{ message|e }}</div>
+              {% endfor %}
+            {% endif %}
           {% endwith %}
         </div>
 
@@ -74,3 +73,4 @@ A página é responsiva e utiliza classes do Bootstrap para estilização. O rod
   
 </body>
 </html>
+
