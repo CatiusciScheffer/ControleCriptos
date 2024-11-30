@@ -1,3 +1,6 @@
+<!-- Página para exibir transações filtradas de criptomoedas. -->
+<!-- Apresenta detalhes como tipo de transação, criptomoedas envolvidas, quantidades, valores, carteiras e taxas. -->
+
 {% extends 'index.html' %}
 
 {% block body %}
@@ -6,7 +9,7 @@
   <table class="table table-sm mb-2">
     <thead>
       <tr>
-        <th class="d-none">ID</th>
+        <th class="d-none">ID</th> <!-- Coluna de ID oculta -->
         <th>Tipo</th>
         <th>Criptomoeda (Pagamento)</th>
         <th>Quantidade (Pagamento)</th>
@@ -23,27 +26,23 @@
       </tr>
     </thead>
     <tbody>
-      {% for transacao, pagamento_wallet, pagamento_crypto, recebimento_wallet, recebimento_crypto, fee_crypto in
-      transacoes %}
+      <!-- Loop para exibir cada transação filtrada -->
+      {% for transacao, pagamento_wallet, pagamento_crypto, recebimento_wallet, recebimento_crypto, fee_crypto in transacoes %}
       <tr>
         <td class="d-none">{{ transacao.id }}</td>
-        <td>{{ transacao.transaction_type }}</td>
+        <td>{{ transacao.transaction_type }}</td> <!-- Tipo de transação -->
         <td>{{ pagamento_crypto.crypto_symbol if pagamento_crypto else '-' }}</td>
         <td>{{ transacao.crypto_payment_quantity if transacao.crypto_payment_quantity is not none else '-' }}</td>
-        <td>{{ "%.2f" | format(transacao.crypto_payment_price) if transacao.crypto_payment_price is not none else '-' }}
-        </td>
+        <td>{{ "%.2f" | format(transacao.crypto_payment_price) if transacao.crypto_payment_price is not none else '-' }}</td>
         <td>{{ recebimento_crypto.crypto_symbol if recebimento_crypto else '-' }}</td>
         <td>{{ transacao.crypto_receive_quantity if transacao.crypto_receive_quantity is not none else '-' }}</td>
-        <td>{{ "%.2f" | format(transacao.crypto_receive_price) if transacao.crypto_receive_price is not none else '-' }}
-        </td>
-        <td>{{ pagamento_wallet.wallet_name if pagamento_wallet else '-' }}</td>
-        <td>{{ recebimento_wallet.wallet_name if recebimento_wallet else '-' }}</td>
-        <td>{{ transacao.transaction_date.strftime('%d/%m/%Y') if transacao.transaction_date else '-' }}</td>
-        <td>{{ transacao.crypto_fee.crypto_symbol if transacao.crypto_fee and transacao.crypto_fee.crypto_symbol is not
-          none else '-' }}</td>
+        <td>{{ "%.2f" | format(transacao.crypto_receive_price) if transacao.crypto_receive_price is not none else '-' }}</td>
+        <td>{{ pagamento_wallet.wallet_name if pagamento_wallet else '-' }}</td> <!-- Carteira de pagamento -->
+        <td>{{ recebimento_wallet.wallet_name if recebimento_wallet else '-' }}</td> <!-- Carteira de recebimento -->
+        <td>{{ transacao.transaction_date.strftime('%d/%m/%Y') if transacao.transaction_date else '-' }}</td> <!-- Data -->
+        <td>{{ transacao.crypto_fee.crypto_symbol if transacao.crypto_fee and transacao.crypto_fee.crypto_symbol is not none else '-' }}</td>
         <td>{{ transacao.crypto_fee_quantity if transacao.crypto_fee_quantity is not none else '-' }}</td>
         <td>{{ "%.2f" | format(transacao.crypto_fee_price) if transacao.crypto_fee_price is not none else '-' }}</td>
-
       </tr>
       {% endfor %}
     </tbody>

@@ -1,3 +1,7 @@
+<!-- Este é um arquivo HTML que define a estrutura de uma página web chamada "Cryptos". 
+Ele inclui um cabeçalho com metadados, links para arquivos CSS, uma barra de navegação lateral e um corpo principal que exibe mensagens de alerta e gráficos de criptomoedas. 
+A página é responsiva e utiliza classes do Bootstrap para estilização. O rodapé contém informações de direitos autorais. -->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -28,7 +32,7 @@
           {% with messages = get_flashed_messages(with_categories=True) %}
           {% if messages %}
           {% for category, message in messages %}
-          <div class="alert {{ category }}">{{ message }}</div>
+          <div class="alert {{ category|e }}">{{ message|e }}</div> <!-- Escapando mensagens -->
           {% endfor %}
           {% endif %}
           {% endwith %}
@@ -62,10 +66,11 @@
   {% block scripts %}
   {{ bootstrap.load_js() }}
   {% endblock %}
+
+  <footer class="bg-light text-center fs-6 py-3 mt-auto">
+    <!-- Conteúdo do rodapé -->
+    <p>&copy; 2023 Cryptos. Todos os direitos reservados.</p>
+  </footer>
+  
 </body>
-
-<footer class="bg-light text-center fs-6 py-3 mt-auto">
-  <p>&copy; 2024 Controle de suas Criptomoedas - Catiusci P.C. Scheffer - Contato: 55 51 98127-9781. Todos os direitos reservados.</p>
-</footer>
-
 </html>

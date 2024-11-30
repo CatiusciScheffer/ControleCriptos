@@ -1,4 +1,4 @@
-<!-- Modal de Confirmação para exclusões em todos os html-->
+<!-- Este código representa um modal de confirmação para exclusões em um site. O modal exibe uma mensagem perguntando ao usuário se ele tem certeza de que deseja excluir um item. Se o usuário clicar em "Deletar", um formulário é enviado com o ID do item a ser excluído. O JavaScript associado captura o evento de abertura do modal e define o ID do item no campo oculto do formulário. -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -13,6 +13,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         <form method="POST" action="{{ modal_form_action }}">
           <input type="hidden" id="IdInput" name="{{ modal_hidden_field }}" value="">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token }}"> <!-- Token CSRF adicionado -->
           <button type="submit" class="btn btn-danger">Deletar</button>
         </form>
       </div>
@@ -27,7 +28,7 @@
     const button = event.relatedTarget; // Botão que acionou o modal
     const idCapture = button.getAttribute('data_id'); // Captura o ID 
     const IdInput = confirmDeleteModal.querySelector('#IdInput'); // Campo oculto do formulário
-    IdInput.value = idCapture; // Define o valor do campo com o ID
+    IdInput.value = encodeURIComponent(idCapture); // Define o valor do campo com o ID, sanitizando-o
   });
 </script>
 

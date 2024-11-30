@@ -1,9 +1,12 @@
-{% extends 'index.html' %}
+<!-- Página para exibir o lucro ou prejuízo obtido nas vendas de criptomoedas. -->
+<!-- Extende o layout base 'index.html' e define o conteúdo do corpo da página. -->
+
+{% extends 'index.html' %} 
 
 {% block body %}
-
 <div class="container mt-4">
   <h3>Lucro / Prejuízo (Venda)</h3>
+  <!-- Tabela para exibir informações detalhadas sobre vendas de criptomoedas -->
   <div class="col-md-8 p-5 text-end">
     <table class="table">
       <thead>
@@ -27,30 +30,30 @@
           <td>{{ "%.2f" % (row['Preço de Venda']| float) }}</td>
           <td>{{ "%.2f" % (row['DCA (Preço Médio de Compra)'] | float) }}</td>
           <td>
-            {% if row['Lucro/Prejuízo'] < 0 %} <span style="color: red;">{{ "%.2f" % (row['Lucro/Prejuízo'] | float)
-              }}</span>
-              {% else %}
-              {{ "%.2f" % (row['Lucro/Prejuízo'] | float) }}
-              {% endif %}
+            {% if row['Lucro/Prejuízo'] < 0 %} 
+            <!-- Valores negativos aparecem em vermelho -->
+            <span style="color: red;">{{ "%.2f" % (row['Lucro/Prejuízo'] | float) }}</span>
+            {% else %}
+            {{ "%.2f" % (row['Lucro/Prejuízo'] | float) }}
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
       </tbody>
-      <!-- Linha de total -->
       <tfoot>
         <tr>
           <td colspan="6"><strong>{{ resultado_final }}:</strong></td>
           <td>
-            {% if total_lucro_prejuizo < 0 %} <span style="color: red;">{{ "%.2f" % (total_lucro_prejuizo | float)
-              }}</span> ({{ resultado_final }})
-              {% else %}
-              <span>{{ "%.2f" % (total_lucro_prejuizo | float) }}</span>
-              {% endif %}
+            <!-- Exibição do total de lucro ou prejuízo com formatação condicional -->
+            {% if total_lucro_prejuizo < 0 %} 
+            <span style="color: red;">{{ "%.2f" % (total_lucro_prejuizo | float) }}</span> ({{ resultado_final }})
+            {% else %}
+            <span>{{ "%.2f" % (total_lucro_prejuizo | float) }}</span>
+            {% endif %}
           </td>
         </tr>
       </tfoot>
     </table>
   </div>
 </div>
-
 {% endblock %}

@@ -1,3 +1,4 @@
+<!-- Este arquivo HTML contém um formulário de cadastro para criação de uma conta. Ele utiliza o Bootstrap para estilização e inclui campos para nome de usuário, e-mail, senha e confirmação de senha. O formulário é enviado via método POST para a rota 'auth.create_account'. -->
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -11,27 +12,27 @@
       <div class="card px-4 mx-auto" style="max-width: 500px">
         <h1 class="mt-4 text-center">Cadastro</h1>
         <div class="container">
-          <form method="POST" action="{{ url_for('auth.create_account') }}">
+          <form method="POST" action="{{ url_for('auth.create_account') }}" novalidate>
             {{ form.hidden_tag() }}
 
             <div class="form-group mb-3">
               {{ form.username.label(class="form-label") }}
-              {{ form.username(class="form-control") }}
+              {{ form.username(class="form-control", required=True) }}
             </div>
 
             <div class="form-group mb-3">
               {{ form.email.label(class="form-label") }}
-              {{ form.email(class="form-control") }}
+              {{ form.email(class="form-control", type="email", required=True) }}
             </div>
 
             <div class="form-group mb-3">
               {{ form.password.label(class="form-label") }}
-              {{ form.password(class="form-control") }}
+              {{ form.password(class="form-control", autocomplete="new-password", required=True) }}
             </div>
 
             <div class="form-group mb-3">
               {{ form.confirm_password.label(class="form-label") }}
-              {{ form.confirm_password(class="form-control") }}
+              {{ form.confirm_password(class="form-control", autocomplete="new-password", required=True) }}
             </div>
 
             <div class="form-group mt-4 mb-5">

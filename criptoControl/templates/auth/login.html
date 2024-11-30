@@ -1,17 +1,16 @@
+<!-- Este é um arquivo HTML que representa uma página de login. Ele inclui um formulário para o usuário inserir seu e-mail e senha, além de opções para lembrar a sessão e links para recuperação de senha e criação de conta. A página também exibe mensagens de erro, se houver, e utiliza o Bootstrap para estilos e formatação. -->
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cryptos</title>
-    {% block styles %} {{ bootstrap.load_css() }} {% endblock %} {% block head
-    %} {% endblock %}
+    {% block styles %} {{ bootstrap.load_css() }} {% endblock %} {% block head %} {% endblock %}
   </head>
   <body>
     <!--  Mensagem de erro caso login falhe  -->
     <div class="container">
-      {% with messages = get_flashed_messages(with_categories=True) %} {% if
-      messages %} {% for category, message in messages %}
+      {% with messages = get_flashed_messages(with_categories=True) %} {% if messages %} {% for category, message in messages %}
       <div class="alert {{ category }}">{{ message }}</div>
       {% endfor %} {% endif %} {% endwith %}
     </div>
@@ -26,7 +25,7 @@
 
             <div class="form-group mb-3">
               {{ formLogin.email.label(class="form-label") }} {{
-              formLogin.email(class="form-control") }}
+              formLogin.email(class="form-control", autocomplete="email") }}
             </div>
 
             <div class="form-group mb-3">
@@ -44,11 +43,8 @@
             </div>
             <!--Criar a funcionalidade de esqueci a senha-->
             <div class="form-group text-center mt-3">
-              <a
-                href="{{ url_for('auth.forgot_password') }}"
-                class="text-decoration-none btn btn-link text-secondary"
-                ><!--{{ formLogin.release_cta.label.text }}--></a
-              >
+              <a href="{{ url_for('auth.forgot_password') }}" class="text-decoration-none btn btn-link text-secondary">
+              </a>
             </div>
 
             <div class="form-group text-center mt-3">

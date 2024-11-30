@@ -1,16 +1,18 @@
-{% extends 'index.html' %} {% block head %} {% endblock %} {% block body %}
-
-<div class="container m-4"">
+{% extends 'index.html' %} 
+{% block head %} 
+{% endblock %} 
+{% block body %} 
+<div class="container m-4">
     <!-- Tabela de Transações -->
     <caption>
-        <div class=" d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
   <h5>Lista de Transações</h5>
   <!-- Botão de Filtro -->
   <a href="{{ url_for('views.filtros_transacoes') }}" class="btn btn-secondary">Filtrar Transações</a>
   <a href="{{ url_for('transaction.add_transactions') }}" class="btn btn-primary">+ Transação</a>
 </div>
 </caption>
-<table class="table table-sm mb-2">
+<table class="table table-sm mb-2 small-font">
   <thead>
     <tr>
       <th class="d-none">ID</th>
@@ -38,26 +40,21 @@
     {% for transaction in cons_transactions %}
     <tr>
       <td class="d-none">{{ transaction.transactions_id }}</td>
-      <td>{{ transaction.payment_wallet.wallet_name }}</td>
-      <td>{{ transaction.receiving_wallet.wallet_name }}</td>
-      <td>{{ transaction.transaction_type }}</td>
+                <td>{{ transaction.payment_wallet.wallet_name | e }}</td>
+                <td>{{ transaction.receiving_wallet.wallet_name | e }}</td>
+                <td>{{ transaction.transaction_type | e }}</td>
       <td>{{ transaction.transaction_date.strftime('%d/%m/%Y') }}</td>
       <td>
-        <span class="text-danger">{{ transaction.crypto_payment.crypto_symbol }}</span>
+                    <span class="text-danger">{{ transaction.crypto_payment.crypto_symbol | e }}</span>
       </td>
       <td>
         {% if transaction.crypto_payment_quantity is not none %}
-        <span class="text-danger">{{ transaction.crypto_payment_quantity }}</span>
-        {% else %}
-        <!-- Exibe um espaço em branco -->
+                    <span class="text-danger">{{ transaction.crypto_payment_quantity | e }}</span>
         {% endif %}
       </td>
       <td>
         {% if transaction.crypto_payment_price is not none %}
-        <span class="text-danger">{{ "%.2f" | format(transaction.crypto_payment_price)
-          }}</span>
-        {% else %}
-        <!-- Exibe um espaço em branco -->
+                    <span class="text-danger">{{ "%.2f" | format(transaction.crypto_payment_price) }}</span>
         {% endif %}
       </td>
       <td>
@@ -68,21 +65,16 @@
         {% endif %}
       </td>
       <td>
-        <span class="text-secundary">{{ transaction.crypto_receive.crypto_symbol }}</span>
+                    <span class="text-secundary">{{ transaction.crypto_receive.crypto_symbol | e }}</span>
       </td>
       <td>
         {% if transaction.crypto_receive_quantity is not none %}
-        <span class="text-secundary">{{ transaction.crypto_receive_quantity }}</span>
-        {% else %}
-        <!-- Exibe um espaço em branco -->
+                    <span class="text-secundary">{{ transaction.crypto_receive_quantity | e }}</span>
         {% endif %}
       </td>
       <td>
         {% if transaction.crypto_receive_price is not none %}
-        <span class="text-secundary">{{ "%.2f" | format(transaction.crypto_receive_price)
-          }}</span>
-        {% else %}
-        <!-- Exibe um espaço em branco -->
+                    <span class="text-secundary">{{ "%.2f" | format(transaction.crypto_receive_price) }}</span>
         {% endif %}
       </td>
       <td>
@@ -93,21 +85,16 @@
         {% endif %}
       </td>
       <td>
-        <span class="text-danger">{{ transaction.crypto_fee.crypto_symbol }}</span>
+                    <span class="text-danger">{{ transaction.crypto_fee.crypto_symbol | e }}</span>
       </td>
       <td>
         {% if transaction.crypto_fee_quantity is not none %}
-        <span class="text-danger">{{ transaction.crypto_fee_quantity }}</span>
-        {% else %}
-        <!-- Exibe um espaço em branco -->
+                    <span class="text-danger">{{ transaction.crypto_fee_quantity | e }}</span>
         {% endif %}
       </td>
       <td>
         {% if transaction.crypto_fee_price is not none %}
-        <span class="text-danger">{{ "%.2f" | format(transaction.crypto_fee_price)
-          }}</span>
-        {% else %}
-        <!-- Exibe um espaço em branco -->
+                    <span class="text-danger">{{ "%.2f" | format(transaction.crypto_fee_price) }}</span>
         {% endif %}
       </td>
       <td>
@@ -152,8 +139,8 @@
       </a>
     </li>
     {% endfor %}
-
-    {% if current_page < total_pages %} <li class="page-item">
+            {% if current_page < total_pages %}
+            <li class="page-item">
       <a class="page-link text-muted" href="{{ url_for('transaction.transactions', page=current_page + 1) }}"
         aria-label="Next">
         <span aria-hidden="true">&raquo;</span>

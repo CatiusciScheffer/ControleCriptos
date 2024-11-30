@@ -22,4 +22,9 @@
     color: darkgray; /* Cor mais escura no hover */
     text-decoration: underline; /* Adiciona um sublinhado no hover */
   }
+
+  .small-font {
+    font-size: 0.75em; /* Reduz o tamanho da fonte */
+  }
+
 </style>

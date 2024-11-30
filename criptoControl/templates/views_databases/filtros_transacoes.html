@@ -1,10 +1,13 @@
-{% extends 'index.html' %}
+{% extends 'index.html' %} 
+<!-- Extende o layout base 'index.html', utilizando sua estrutura principal -->
 
 {% block body %}
 <!-- templates/views_databases/filtros_transacoes.html -->
 <div class="container">
   <h4>Filtros de Transações</h4>
+  <!-- Formulário para aplicar filtros às transações -->
   <form method="GET" action="{{ url_for('views.filter_results') }}">
+    <!-- Filtro por tipo de transação -->
     <div class="mb-1">
       <label for="transaction_type" class="form-label">Tipo de Transação:</label>
       <select name="transaction_type" id="transaction_type" class="form-select">
@@ -16,6 +19,7 @@
       </select>
     </div>
 
+    <!-- Filtro por criptomoeda usada no pagamento -->
     <div class="mb-1">
       <label for="crypto_payment_id" class="form-label">Criptomoeda (Pagamento):</label>
       <select name="crypto_payment_id" id="crypto_payment_id" class="form-select">
@@ -26,6 +30,7 @@
       </select>
     </div>
 
+    <!-- Filtro por criptomoeda recebida -->
     <div class="mb-1">
       <label for="crypto_receive_id" class="form-label">Criptomoeda (Recebimento):</label>
       <select name="crypto_receive_id" id="crypto_receive_id" class="form-select">
@@ -36,6 +41,7 @@
       </select>
     </div>
 
+    <!-- Filtro por carteira de pagamento -->
     <div class="mb-1">
       <label for="payment_wallet_id" class="form-label">Carteira de Pagamento:</label>
       <select name="payment_wallet_id" id="payment_wallet_id" class="form-select">
@@ -46,6 +52,7 @@
       </select>
     </div>
 
+    <!-- Filtro por carteira de recebimento -->
     <div class="mb-1">
       <label for="receiving_wallet_id" class="form-label">Carteira de Recebimento:</label>
       <select name="receiving_wallet_id" id="receiving_wallet_id" class="form-select">
@@ -56,12 +63,13 @@
       </select>
     </div>
 
+    <!-- Filtro por data da transação -->
     <div class="mb-1">
       <label for="transaction_date" class="form-label">Data da Transação:</label>
       <input type="date" name="transaction_date" id="transaction_date" class="form-control">
     </div>
 
-    <!-- Filtros para taxas -->
+    <!-- Filtro por criptomoeda usada para taxas -->
     <div class="mb-1">
       <label for="crypto_fee_id" class="form-label">Criptomoeda (Taxa):</label>
       <select name="crypto_fee_id" id="crypto_fee_id" class="form-select">
@@ -71,6 +79,8 @@
         {% endfor %}
       </select>
     </div>
+
+    <!-- Botão para submeter o formulário -->
     <div>
       <button type="submit" class="btn btn-primary">Pesquisar</button>
     </div>

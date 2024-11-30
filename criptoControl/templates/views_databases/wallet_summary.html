@@ -1,3 +1,6 @@
+<!-- Página que exibe os saldos de criptomoedas organizados por carteira. -->
+<!-- Mostra a quantidade de moedas, o preço atual e o valor total por carteira, com um total consolidado. -->
+
 {% extends 'index.html' %}
 
 {% block body %}
@@ -7,32 +10,35 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Carteira</th>
-        <th>Moeda</th>
-        <th class="text-end">Quantidade</th>
-        <th class="text-end">Preço Atual</th>
-        <th class="text-end">Valor</th>
+        <th>Carteira</th> <!-- Nome da carteira -->
+        <th>Moeda</th> <!-- Nome da criptomoeda -->
+        <th class="text-end">Quantidade</th> <!-- Quantidade total de moedas na carteira -->
+        <th class="text-end">Preço Atual</th> <!-- Preço atual da moeda -->
+        <th class="text-end">Valor</th> <!-- Valor total em dinheiro -->
       </tr>
     </thead>
     <tbody>
+      <!-- Iteração para listar saldos -->
       {% for saldo in saldos %}
       <tr>
-        <td>{{ saldo.carteira }}</td>
-        <td>{{ saldo.crypto }}</td>
-        <td class="text-end">{{ saldo.quantidade | float }}</td>
-        <td class="text-end">{{ "%.2f" % (saldo.preço | float) }}</td>
-        <td class="text-end">{{ "%.2f" % (saldo.valor | float) }}</td>
+        <td>{{ saldo.carteira }}</td> <!-- Nome da carteira -->
+        <td>{{ saldo.crypto }}</td> <!-- Nome da criptomoeda -->
+        <td class="text-end">{{ saldo.quantidade | float }}</td> <!-- Quantidade de moedas -->
+        <td class="text-end">{{ "%.2f" % (saldo.preço | float) }}</td> <!-- Preço atual -->
+        <td class="text-end">{{ "%.2f" % (saldo.valor | float) }}</td> <!-- Valor total -->
       </tr>
       {% else %}
+      <!-- Mensagem exibida caso não haja saldos -->
       <tr>
         <td colspan="5">Nenhum dado disponível.</td>
       </tr>
       {% endfor %}
     </tbody>
+    <!-- Linha de rodapé com o valor total -->
     <tfoot>
       <tr class="table-dark text-white fw-bold">
         <td colspan="4" class="text-end">Total</td>
-        <td class="text-end">{{ "%.2f" % (total_valor | float) }}</td>
+        <td class="text-end">{{ "%.2f" % (total_valor | float) }}</td> <!-- Total consolidado -->
       </tr>
     </tfoot>
   </table>

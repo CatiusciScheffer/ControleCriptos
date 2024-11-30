@@ -36,6 +36,7 @@ CRYPTOS_FLASK
                 |--wallet_summary.html
             |--index.html
             |--navibar.html
+            |--pagination.html
         |__init__.py
         |api.py
         |forms.py

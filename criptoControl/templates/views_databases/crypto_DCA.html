@@ -1,13 +1,20 @@
-{% extends 'index.html' %}
+{% extends 'index.html' %} 
+<!-- Extende o template 'index.html', permitindo herdar a estrutura principal da página -->
 
-{% block body %}
+{% block body %} 
+<!-- Define o bloco 'body' que será preenchido neste template -->
 
-<div class="container mt-4">
-  <h3>DCA</h3>
-  <div class="col-md-8 p-5 text-end">
-    <table class="table">
+<div class="container mt-4"> 
+  <!-- Div principal com a classe container para centralizar e estilizar o conteúdo -->
+  <h3>DCA</h3> 
+  <!-- Cabeçalho da seção indicando que se trata de informações relacionadas ao DCA -->
+  <div class="col-md-8 p-5 text-end"> 
+    <!-- Div para conteúdo centralizado e com padding, alinhado à direita -->
+    <table class="table"> 
+      <!-- Tabela para exibição dos dados -->
       <thead>
         <tr>
+          <!-- Cabeçalho da tabela com os títulos das colunas -->
           <th>Carteira</th>
           <th>Moeda</th>
           <th>DCA</th>
@@ -16,23 +23,35 @@
         </tr>
       </thead>
       <tbody>
-        {% for row in dca_compras_data %}
+        {% for row in dca_compras_data %} 
+        <!-- Itera sobre os dados fornecidos na variável 'dca_compras_data' -->
         <tr>
-          <td>{{ row['Carteira'] }}</td>
-          <td>{{ row['Moeda'] }}</td>
-          <td>{{ "%.2f" % (row['DCA'] | float) }}</td>
-          <td>{{ "%.2f" % (row['PrecoAtual'] | float) }}</td>
+          <!-- Linha para exibir os dados de cada item -->
+          <td>{{ row['Carteira'] }}</td> 
+          <!-- Exibe o nome da carteira -->
+          <td>{{ row['Moeda'] }}</td> 
+          <!-- Exibe o nome da moeda -->
+          <td>{{ "%.2f" % (row['DCA'] | float) }}</td> 
+          <!-- Formata e exibe o valor do DCA com duas casas decimais -->
+          <td>{{ "%.2f" % (row['PrecoAtual'] | float) }}</td> 
+          <!-- Formata e exibe o preço atual com duas casas decimais -->
           <td>
-            {% if row['Situacao'] < 0 %} <span style="color: red;">{{ "%.2f" % (row['Situacao'] | float) }}</span>
-              {% else %}
+            <!-- Exibe a situação, formatando com cores dependendo do valor -->
+            {% if row['Situacao'] < 0 %} 
+              <!-- Caso a situação seja negativa -->
+              <span style="color: red;">{{ "%.2f" % (row['Situacao'] | float) }}</span>
+            {% else %}
+              <!-- Caso a situação seja positiva ou zero -->
               <span>{{ "%.2f" % (row['Situacao'] | float) }}</span>
-              {% endif %}
+            {% endif %}
           </td>
         </tr>
-        {% endfor %}
+        {% endfor %} 
+        <!-- Fim do loop que itera pelos dados -->
       </tbody>
     </table>
   </div>
 </div>
 
-{% endblock %}
+{% endblock %} 
+<!-- Fim do bloco 'body' -->

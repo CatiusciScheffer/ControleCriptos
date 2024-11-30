@@ -27,6 +27,13 @@ def prices():
     prices (lista): Uma lista de objetos Price que representam os preços mais recentes das criptomoedas.
     """
     try:
+        # Obtém a página atual da URL (padrão: 1)
+        current_page = request.args.get('page', 1, type=int)
+        per_page = 10  # Número de itens por página (pode ser ajustado conforme necessário)
+
+        # Cálculo do offset para a paginação
+        offset = (current_page - 1) * per_page
+
         # Cria uma sessão e usa o contexto 'with' para garantir que a sessão seja fechada corretamente
         with create_session() as session:
             # Subconsulta para obter a data-hora do preço mais recente para cada criptomoeda
@@ -36,25 +43,45 @@ def prices():
                 .subquery()
             )
 
-            # Consulta principal para obter os preços mais recentes
-            prices = (
+            # Contagem total de registros para determinar o número total de páginas
+            total_prices = (
                 session.query(Price)
-                .options(joinedload(Price.price_cryptocurrency))  # Carrega dados relacionados
                 .join(subquery, (Price.price_crypto_id == subquery.c.price_crypto_id) &
                                 (Price.price_consult_datetime == subquery.c.latest_timestamp))
                 .join(Cryptocurrency, Price.price_crypto_id == Cryptocurrency.crypto_id)
                 .filter(Cryptocurrency.crypto_status == 'N')
+                .count()
+            )
+
+            # Cálculo do total de páginas
+            total_pages = (total_prices + per_page - 1) // per_page  # Arredonda para cima
+
+            # Consulta principal para obter os preços mais recentes
+            prices = (
+                session.query(Price)
+                .options(joinedload(Price.price_cryptocurrency))  # Carrega dados relacionados
+                .join(subquery, (Price.price_crypto_id == subquery.c.price_crypto_id) & 
+                                (Price.price_consult_datetime == subquery.c.latest_timestamp))
+                .join(Cryptocurrency, Price.price_crypto_id == Cryptocurrency.crypto_id)
+                .filter(Cryptocurrency.crypto_status == 'N')
                 .order_by(Cryptocurrency.crypto_symbol)
+                .limit(per_page)
+                .offset(offset)
                 .all()
             )
+
     except Exception as e:
         # Registre ou trate o erro conforme necessário
         flash(f"Ocorreu um erro: {e}")
         prices = []
 
-    return render_template('views_databases/prices.html', prices=prices)
-
-
+    return render_template(
+        'views_databases/prices.html', 
+        prices=prices,
+        current_page=current_page, 
+        total_pages=total_pages,
+        endpoint='views.prices'
+    )
 
 
 
@@ -63,36 +90,55 @@ def prices():
 @login_required
 def wallets():
     """
-    Exibe a lista de carteiras do usuário autenticado.
+    Exibe um resumo dos saldos das carteiras para o usuário.
 
-    Esta função busca todas as carteiras associadas ao usuário atual que não estão com o status 'S' (suspensas) e as ordena pelo nome da carteira.
-    A função é protegida por um decorador de login, garantindo que apenas usuários autenticados possam acessá-la.
-
-    Passos realizados pela função:
-    1. Cria uma sessão para interagir com o banco de dados.
-    2. Consulta as carteiras do usuário atual, filtrando pelo status e pelo ID do usuário.
-    3. Ordena as carteiras pelo nome.
-    4. Fecha a sessão após a consulta.
-    5. Renderiza o template 'operacoes/wallets.html' com a lista de carteiras.
+    Parâmetros:
+    Nenhum
 
     Retorna:
-    render_template: Retorna a renderização do template 'operacoes/wallets.html' com as carteiras do usuário.
-
-    Exceções:
-    Não levanta exceções diretamente, mas garante que a sessão do banco de dados seja fechada após a operação.
+    render_template: Um modelo HTML renderizado com dados de carteiras, página atual, total de páginas e nome do endpoint.
     """
     session = None
     try:
+        # Cria uma sessão de banco de dados
         session = create_session()
+
+        # Obtém a página atual da URL (padrão: 1)
+        current_page = request.args.get('page', 1, type=int)
+        per_page = 10  # Número de itens por página (pode ser ajustado conforme necessário)
+
+        # Calcula o deslocamento para paginação
+        offset = (current_page - 1) * per_page
+
+        # Total de carteiras para calcular o número de páginas
+        total_wallets = session.query(Wallet).filter(
+            Wallet.wallet_status != 'S',
+            Wallet.wallet_user_id == current_user.user_id
+        ).count()
+
+        # Consulta paginada
         wallets = session.query(Wallet).filter(
             Wallet.wallet_status != 'S',
-            Wallet.wallet_user_id == current_user.user_id).order_by(Wallet.wallet_name).all()
-    
+            Wallet.wallet_user_id == current_user.user_id
+        ).order_by(Wallet.wallet_name).limit(per_page).offset(offset).all()
+
+        # Calcula o total de páginas
+        total_pages = (total_wallets + per_page - 1) // per_page  # Arredonda para cima para o número inteiro mais próximo
+
     finally:
         if session:
             session.close()
-    
-    return render_template('operacoes/wallets.html', wallets=wallets)
+
+    # Renderiza o modelo com dados de carteiras e o nome do endpoint
+    return render_template(
+        'operacoes/wallets.html', 
+        wallets=wallets, 
+        current_page=current_page, 
+        total_pages=total_pages,
+        endpoint='views.wallets' 
+    )
+
+
 
 
 #***** ROTA MOEDAS *****
@@ -119,14 +165,38 @@ def cryptos():
     Não levanta exceções diretamente, mas garante que a sessão do banco de dados seja fechada após a operação.
     """
     session = None
+    
+    # Obtém a página atual da URL (padrão: 1)
+    current_page = request.args.get('page', 1, type=int)
+    per_page = 10  # Número de itens por página (pode ser ajustado conforme necessário)
+        
+    # Cálculo do offset para a paginação
+    offset = (current_page - 1) * per_page
+    
     try:
         session = create_session()
-        cryptos = session.query(Cryptocurrency).filter(Cryptocurrency.crypto_status != 'S').order_by(Cryptocurrency.crypto_name).all()
+
+        # Consulta paginada das criptomoedas
+        cryptos = session.query(Cryptocurrency).filter(Cryptocurrency.crypto_status != 'S').order_by(Cryptocurrency.crypto_name).limit(per_page).offset(offset).all()
+        
+        # Total de criptomoedas para calcular o total de páginas
+        total_cryptos = session.query(Cryptocurrency).filter(Cryptocurrency.crypto_status != 'S').count()
+
+        # Cálculo do total de páginas
+        total_pages = (total_cryptos + per_page - 1) // per_page  # Arredonda para cima
+        
     finally:
         if session:
             session.close()
     
-    return render_template('operacoes/cryptos.html', cryptos=cryptos)
+    # Renderiza o template com os dados das criptomoedas e o nome do endpoint
+    return render_template(
+        'operacoes/cryptos.html', 
+        cryptos=cryptos,  # Corrigido de total_cryptos para cryptos (paginado)
+        current_page=current_page, 
+        total_pages=total_pages,
+        endpoint='views.cryptos'  # A URL agora deve ser construída corretamente com o endpoint
+    )
 
 
 @views_db_bp.route('/balance_wallet')

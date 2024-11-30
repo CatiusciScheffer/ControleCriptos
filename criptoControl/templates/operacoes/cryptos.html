@@ -1,3 +1,4 @@
+{# Este arquivo é um template HTML que estende 'index.html' e exibe uma lista de criptomoedas cadastradas. #}
 {% extends 'index.html' %}
 
 {% block body %}
@@ -11,7 +12,7 @@
     </div>
   </caption>
 
-  <table class="table">
+  <table class="table small-font">
     <thead>
       <tr>
         <th>Nome</th>
@@ -39,6 +40,9 @@
       {% endfor %}
     </tbody>
   </table>
+
+  {% include 'pagination.html' %}
+
 </div>
 
 <!-- Defina as variáveis antes de incluir o modal -->

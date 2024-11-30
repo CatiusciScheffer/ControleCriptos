@@ -1,5 +1,6 @@
-{% extends 'index.html' %} {% block body %}
-
+{# Este arquivo HTML é um template que estende 'index.html' e cria um formulário para adicionar uma nova carteira de criptomoedas. O formulário inclui campos para o nome da carteira e a rede da carteira, além de um botão para enviar os dados. #}
+{% extends 'index.html' %} 
+{% block body %}
 <div class="container">
   <div class="text-center pt-4">
     <h5 class="text-center">Adicionar Carteira</h5>
@@ -9,10 +10,10 @@
       {{ formAddWallet.csrf_token }} {{ formAddWallet.hidden_tag() }}
       <fieldset>
         <div class="card container text-center p-4">
-          {{ formAddWallet.wallet_name.label }} {{
-          formAddWallet.wallet_name(class="form-select") }} {{
-          formAddWallet.wallet_network.label }} {{
-          formAddWallet.wallet_network(class="form-select") }}
+          {{ formAddWallet.wallet_name.label }}
+          {{ formAddWallet.wallet_name(class="form-select", required=True, pattern="^[a-zA-Z0-9 _-]+$") }}
+          {{ formAddWallet.wallet_network.label }}
+          {{ formAddWallet.wallet_network(class="form-select", required=True, pattern="^[a-zA-Z0-9 _-]+$") }}
         </div>
       </fieldset>
       <div class="d-grid gap-3 mt-3">

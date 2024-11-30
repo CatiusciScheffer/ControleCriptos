@@ -1,34 +1,46 @@
+<!-- Menu de navegação vertical para acesso rápido às diferentes funcionalidades do sistema -->
+<!-- Inclui links para páginas como Home, Transações, Preços, Carteiras, Moedas, Saldo por Carteira/Moedas, Saldos, Lucro/Prejuízo e DCA -->
+
 <nav class="nav">
   <div class="container-fluid container">    
     <div id="navbarNav">
       <ul class="nav flex-column mt-5">
+        <!-- Link para a página inicial -->
         <li class="nav-item">
           <a class="nav-link home-link active" aria-current="page" href="{{ url_for('main.index') }}">Home</a>
         </li>
+        <!-- Link para a página de transações -->
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ url_for('transaction.transactions') }}">Transações</a>
         </li>
+        <!-- Link para a página de preços -->
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ url_for('views.prices') }}">Preços</a>
         </li>
+        <!-- Link para a página de carteiras -->
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ url_for('views.wallets') }}">Carteiras</a>
         </li>
+        <!-- Link para a página de moedas -->
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ url_for('views.cryptos') }}">Moedas</a>
         </li>
+        <!-- Link para o saldo por carteira e moeda -->
         <li class="nav-item">
           <a class="nav-link active" aria-current="page"
             href="{{ url_for('views.wallet_summary', payment_wallet_id=1) }}">Saldo por Carteira/Moedas</a>
         </li>
+        <!-- Link para a página de saldos gerais -->
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ url_for('views.balance_wallet') }}">Saldos</a>
         </li>
-        <li class="nav-item"></li>
-        <a class="nav-link active" aria-current="page" href="{{ url_for('views.lucro_prejuizo') }}">Lucro/Prejuízo</a>
+        <!-- Link para a página de lucro/prejuízo -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('views.lucro_prejuizo') }}">Lucro/Prejuízo</a>
         </li>
-        <li class="nav-item"></li>
-        <a class="nav-link active" aria-current="page" href="{{ url_for('views.dca_compras') }}">DCA</a>
+        <!-- Link para a página de cálculo do DCA -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('views.dca_compras') }}">DCA</a>
         </li>
       </ul>
     </div>

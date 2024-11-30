@@ -1,0 +1,43 @@
+<!--PAGINAÇÃO QUE SERÁ APLICADA EM TODOS OS HTML NECESSÁRIOS-->
+
+<!-- Componente de navegação de páginas (paginador) para navegação em listas de itens, como tabelas ou resultados de pesquisa. -->
+<!-- Permite navegar entre páginas de resultados com links para a página anterior, páginas específicas e a próxima página. -->
+
+<nav aria-label="Navegação de páginas" class="mt-4">
+    <ul class="pagination pagination-sm justify-content-center">
+        <!-- Verifica se a página atual é maior que 1 e cria o link para a página anterior -->
+        {% if current_page > 1 %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for(endpoint, page=current_page - 1) }}" aria-label="Anterior">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <span class="page-link">&laquo;</span>
+        </li>
+        {% endif %}
+
+        <!-- Gera links para as páginas numeradas -->
+        {% for page in range(1, total_pages + 1) %}
+        <li class="page-item {% if page == current_page %}active{% endif %}">
+            <a class="page-link" href="{{ url_for(endpoint, page=page) }}">{{ page }}</a>
+        </li>
+        {% endfor %}
+
+        <!-- Verifica se a página atual é menor que o total de páginas e cria o link para a próxima página -->
+        {% if current_page < total_pages %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for(endpoint, page=current_page + 1) }}" aria-label="Próximo">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <span class="page-link">&raquo;</span>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+
+  

@@ -1,4 +1,8 @@
-{% extends 'index.html' %} {% block body %}
+<!-- Página para exibir o saldo geral dividido em dólares e reais. -->
+<!-- Apresenta o saldo total e detalhado por carteira, tanto em USD quanto em BRL. -->
+
+{% extends 'index.html' %} 
+{% block body %}
 <div class="container mt-4">
   <h1>Saldo Geral</h1>
 
@@ -7,7 +11,7 @@
     <div class="row-md-4 mb-4">
       <hr />
       <h3 class="fw-bold">
-        U$ {{ "%.2f" % (total_valor_dolar | float) }}
+        U$ {{ "%.2f" % (total_valor_dolar | float) }} <!-- Total geral em dólares -->
       </h3>
     </div>
 
@@ -20,10 +24,11 @@
           </tr>
         </thead>
         <tbody>
+          <!-- Iteração sobre as carteiras com saldo em dólares -->
           {% for wallet in carteiras_dolar %}
           <tr>
-            <td>{{ wallet.carteira }}</td>
-            <td>{{ "%.2f" % (wallet.valor_total | float) }}</td>
+            <td>{{ wallet.carteira }}</td> <!-- Nome da carteira -->
+            <td>{{ "%.2f" % (wallet.valor_total | float) }}</td> <!-- Valor total em dólares -->
           </tr>
           {% endfor %}
         </tbody>
@@ -36,7 +41,7 @@
     <div class="row-md-4 mb-4">
       <hr />
       <h3 class="fw-bold">
-        R$ {{ "%.2f" % (total_valor_real | float) }}
+        R$ {{ "%.2f" % (total_valor_real | float) }} <!-- Total geral em reais -->
       </h3>
     </div>
 
@@ -49,10 +54,11 @@
           </tr>
         </thead>
         <tbody>
+          <!-- Iteração sobre as carteiras com saldo em reais -->
           {% for wallet in carteiras_real %}
           <tr>
-            <td>{{ wallet.carteira }}</td>
-            <td>{{ "%.2f" % (wallet.valor_total | float) }}</td>
+            <td>{{ wallet.carteira }}</td> <!-- Nome da carteira -->
+            <td>{{ "%.2f" % (wallet.valor_total | float) }}</td> <!-- Valor total em reais -->
           </tr>
           {% endfor %}
         </tbody>

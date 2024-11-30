@@ -1,3 +1,4 @@
+<!-- Este arquivo HTML utiliza o Jinja2 para renderizar um formulário de adição de transações. O formulário coleta informações sobre a transação, incluindo tipo, data, dados de recebimento, pagamento e taxas. Ele também inclui campos ocultos para armazenar IDs de carteiras e utiliza scripts JavaScript para funcionalidades adicionais. -->
 {% extends 'index.html' %}
 {% block body %}
 
@@ -18,8 +19,7 @@
           </div>
           <div class="col mb-1">
             <h5>{{ formTransactions.transaction_date.label }}</h5>
-            {{ formTransactions.transaction_date(class="form-select", value=transaction_date.strftime('%Y-%m-%d') if
-            transaction_date else '') }}
+            {{ formTransactions.transaction_date(class="form-select", value=transaction_date.strftime('%Y-%m-%d') if transaction_date else '') }}
           </div>
         </div>
       </div>
@@ -30,10 +30,8 @@
             <div class="col mb-1">
               {{ formTransactions.crypto_receive.label }}
               {{ formTransactions.crypto_receive(class="form-select", id="crypto_receive") }}
-              <input type="hidden" name="payment_wallet_id" id="payment_wallet_id"
-                value="{{ formTransactions.payment_wallet.data }}" />
-              <input type="hidden" name="carteriaRecebimentoTransacao_id" id="carteriaRecebimentoTransacao_id"
-                value="{{ formTransactions.receiving_wallet.data }}" />
+              <input type="hidden" name="payment_wallet_id" id="payment_wallet_id" value="{{ formTransactions.payment_wallet.data|e }}" />
+              <input type="hidden" name="carteriaRecebimentoTransacao_id" id="carteriaRecebimentoTransacao_id" value="{{ formTransactions.receiving_wallet.data|e }}" />
             </div>
             <div class="col mb-1">
               {{ formTransactions.crypto_receive_price.label }}
@@ -45,8 +43,7 @@
             </div>
             <div class="col mb-1">
               {{ formTransactions.total_received.label }}
-              {{ formTransactions.total_received(class="form-control bg-light border border-secondary", readonly=True,
-              id="total_received") }}
+              {{ formTransactions.total_received(class="form-control bg-light border border-secondary", readonly=True, id="total_received") }}
             </div>
           </div>
         </div>
@@ -59,8 +56,7 @@
               <div class="col mb-1">
                 {{ formTransactions.crypto_payment.label }}
                 {{ formTransactions.crypto_payment(class="form-select", id="crypto_payment") }}
-                <input type="hidden" name="crypto_paymentId" id="crypto_paymentId"
-                  value="{{ formTransactions.crypto_payment.data }}" />
+                <input type="hidden" name="crypto_paymentId" id="crypto_paymentId" value="{{ formTransactions.crypto_payment.data|e }}" />
               </div>
               <div class="col mb-1">
                 {{ formTransactions.crypto_payment_price.label }}
@@ -72,8 +68,7 @@
               </div>
               <div class="col mb-1">
                 {{ formTransactions.total_paid.label }}
-                {{ formTransactions.total_paid(class="form-control bg-light border border-secondary", readonly=True,
-                id="total_paid") }}
+                {{ formTransactions.total_paid(class="form-control bg-light border border-secondary", readonly=True, id="total_paid") }}
               </div>
             </div>
           </div>
@@ -85,10 +80,8 @@
               <div class="col mb-1">
                 {{ formTransactions.crypto_fee.label }}
                 {{ formTransactions.crypto_fee(class="form-select", id="crypto_fee") }}
-                <input type="hidden" name="payment_wallet_id" id="payment_wallet_id"
-                  value="{{ formTransactions.payment_wallet.data }}" />
-                <input type="hidden" name="carteriaRecebimentoTransacao_id" id="carteriaRecebimentoTransacao_id"
-                  value="{{ formTransactions.receiving_wallet.data }}" />
+                <input type="hidden" name="payment_wallet_id" id="payment_wallet_id" value="{{ formTransactions.payment_wallet.data|e }}" />
+                <input type="hidden" name="carteriaRecebimentoTransacao_id" id="carteriaRecebimentoTransacao_id" value="{{ formTransactions.receiving_wallet.data|e }}" />
               </div>
               <div class="col mb-1">
                 {{ formTransactions.crypto_fee_price.label }}
@@ -100,8 +93,7 @@
               </div>
               <div class="col mb-1">
                 {{ formTransactions.total_fee.label }}
-                {{ formTransactions.total_fee(class="form-control bg-light border border-secondary", readonly=True,
-                id="total_fee") }}
+                {{ formTransactions.total_fee(class="form-control bg-light border border-secondary", readonly=True, id="total_fee") }}
               </div>
             </div>
           </div>
@@ -113,14 +105,12 @@
           <div class="col mb-1" id="saida_wallet_container">
             {{ formTransactions.payment_wallet.label }}
             {{ formTransactions.payment_wallet(class="form-select", id="payment_wallet") }}
-            <input type="hidden" name="payment_wallet" id="payment_wallet_id"
-              value="{{ formTransactions.payment_wallet.data }}" />
+            <input type="hidden" name="payment_wallet" id="payment_wallet_id" value="{{ formTransactions.payment_wallet.data|e }}" />
           </div>
           <div class="col mb-1" id="receiving_wallet_container">
             {{ formTransactions.receiving_wallet.label }}
             {{ formTransactions.receiving_wallet(class="form-select", id="receiving_wallet") }}
-            <input type="hidden" name="carteriaRecebimentoTransacaoId" id="carteriaRecebimentoTransacaoId"
-              value="{{ formTransactions.receiving_wallet.data }}" />
+            <input type="hidden" name="carteriaRecebimentoTransacaoId" id="carteriaRecebimentoTransacaoId" value="{{ formTransactions.receiving_wallet.data|e }}" />
           </div>
         </div>
       </div>
