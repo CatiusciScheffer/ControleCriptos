@@ -104,15 +104,6 @@ CRYPTOS_FLASK/
    ```bash
    git clone https://github.com/CatiusciScheffer/ControleCriptos
   
-## 🌐 **Demonstração Online**
-Acesse o projeto hospedado em: https://controlecripto-18636635ed0d.herokuapp.com/
-Controle Criptos
-
-Login para teste:
-- E-mail: catiusci.ctadigital@gmail.com
-- Senha: Chefa220408#
-Ou crie sua própria conta para explorar!
-
 ## 📬 **Contato**
 E-mail: cpcscheffer@outlook.com
 LinkedIn: https://www.linkedin.com/in/catiuscipagnonceli-cienciasdacomputacao/
