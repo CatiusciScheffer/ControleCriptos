@@ -29,7 +29,7 @@ def login():
     if formLogin.validate_on_submit():
         # Verifica se o email existe no banco de dados
         user = User.query.filter_by(email=formLogin.email.data).first()
-        if user and check_password_hash(user.password_hash, formLogin.password_hash.data):
+        if user and check_password_hash(user.password_hash, formLogin.password.data):
             # Se o email e a senha são válidos, faz o login do usuário
             login_user(user, remember=formLogin.remember_me.data)
             return redirect(url_for('main.index'))  # Redireciona para a rota index após o login

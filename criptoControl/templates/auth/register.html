@@ -8,31 +8,56 @@
     {{ bootstrap.load_css() }}
   </head>
   <body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} mt-3" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
     <div class="container mt-5">
       <div class="card px-4 mx-auto" style="max-width: 500px">
         <h1 class="mt-4 text-center">Cadastro</h1>
         <div class="container">
-          <form method="POST" action="{{ url_for('auth.create_account') }}" novalidate>
+          <form
+            method="POST"
+            action="{{ url_for('auth.create_account') }}"
+            novalidate
+          >
             {{ form.hidden_tag() }}
 
             <div class="form-group mb-3">
-              {{ form.username.label(class="form-label") }}
-              {{ form.username(class="form-control", required=True) }}
+              {{ form.username.label(class="form-label") }} {{
+              form.username(class="form-control", required=True) }}
             </div>
 
             <div class="form-group mb-3">
-              {{ form.email.label(class="form-label") }}
-              {{ form.email(class="form-control", type="email", required=True) }}
+              {{ form.email.label(class="form-label") }} {{
+              form.email(class="form-control", type="email", required=True) }}
+              {% for error in form.confirm_password.errors %}
+              <div class="text-danger">{{ error }}</div>
+              {% endfor %}
             </div>
 
             <div class="form-group mb-3">
               {{ form.password.label(class="form-label") }}
-              {{ form.password(class="form-control", autocomplete="new-password", required=True) }}
+              {{form.password(class="form-control", autocomplete="new-password",
+              required=True) }} {% for error in form.password.errors %}
+              <div class="text-danger">{{ error }}</div>
+              {% endfor %}
             </div>
 
             <div class="form-group mb-3">
-              {{ form.confirm_password.label(class="form-label") }}
-              {{ form.confirm_password(class="form-control", autocomplete="new-password", required=True) }}
+              {{ form.confirm_password.label(class="form-label") }} {{
+              form.confirm_password(class="form-control",
+              autocomplete="new-password", required=True) }} {% for error in
+              form.confirm_password.errors %}
+              <div class="text-danger">{{ error }}</div>
+              {% endfor %}
             </div>
 
             <div class="form-group mt-4 mb-5">

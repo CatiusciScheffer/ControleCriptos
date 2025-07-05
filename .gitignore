@@ -1,6 +1,6 @@
-.env
 anotacoes.txt
 
+venv/
 __pycache__/
 
 *.py[cod]

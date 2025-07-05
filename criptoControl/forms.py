@@ -140,16 +140,23 @@ class Users(FlaskForm):
         A validação de complexidade da senha é realizada pela função `check_password_complexity`.
     """
     
-    email = StringField('Email', validators=[DataRequired(), Email(message="Insira um email válido.")])
-    password_hash = PasswordField('Senha', validators=[
-        DataRequired(),
-        Length(min=8, message="A senha deve ter pelo menos 8 caracteres."),
-        check_password_complexity
-    ])
-    remember_me = BooleanField('Lembrar-me')  # Checkbox para lembrar-me
+    email = StringField(
+        'Email',
+        validators=[
+            DataRequired(),
+            Email(message="Insira um email válido.")
+        ]
+    )
+    password = PasswordField(
+        'Senha',
+        validators=[
+            DataRequired(message="O campo senha é obrigatório."),
+        ]
+    )
+    remember_me = BooleanField('Lembrar-me')
     btn_user_enter = SubmitField('Entrar')
-    btn_user_create = SubmitField('Cadastrar')  # Botão para criar conta
-    release_cta = SubmitField('Esqueci minha senha')  # Botão para recuperação de senha
+    btn_user_create = SubmitField('Cadastrar')
+    release_cta = SubmitField('Esqueci minha senha')
     
 
 class RegisterForm(FlaskForm):
@@ -203,6 +210,7 @@ class RegisterForm(FlaskForm):
         validators=[
             DataRequired(message="O campo senha é obrigatório."),
             Length(min=6, message="A senha deve ter no mínimo 6 caracteres."),
+            check_password_complexity
         ],
     )
     confirm_password = PasswordField(

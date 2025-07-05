@@ -5,14 +5,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cryptos</title>
-    {% block styles %} {{ bootstrap.load_css() }} {% endblock %} {% block head %} {% endblock %}
+    {% block styles %} {{ bootstrap.load_css() }} {% endblock %} {% block head
+    %} {% endblock %}
   </head>
   <body>
-    <!--  Mensagem de erro caso login falhe  -->
     <div class="container">
-      {% with messages = get_flashed_messages(with_categories=True) %} {% if messages %} {% for category, message in messages %}
-      <div class="alert {{ category }}">{{ message }}</div>
-      {% endfor %} {% endif %} {% endwith %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} mt-3" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     </div>
 
     <div class="container mt-5">
@@ -26,11 +32,17 @@
             <div class="form-group mb-3">
               {{ formLogin.email.label(class="form-label") }} {{
               formLogin.email(class="form-control", autocomplete="email") }}
+              {% for error in formLogin.password.errors %}
+              <div class="text-danger">{{ error }}</div>
+              {% endfor %}
             </div>
 
             <div class="form-group mb-3">
-              {{ formLogin.password_hash.label(class="form-label") }} {{
-              formLogin.password_hash(class="form-control") }}
+              {{ formLogin.password.label(class="form-label") }} {{
+              formLogin.password(class="form-control") }}
+              {% for error in formLogin.password.errors %}
+              <div class="text-danger">{{ error }}</div>
+              {% endfor %}
             </div>
 
             <div class="form-check mb-3">
@@ -43,14 +55,20 @@
             </div>
             <!--Criar a funcionalidade de esqueci a senha-->
             <div class="form-group text-center mt-3">
-              <a href="{{ url_for('auth.forgot_password') }}" class="text-decoration-none btn btn-link text-secondary">
+              <a
+                href="{{ url_for('auth.forgot_password') }}"
+                class="text-decoration-none btn btn-link text-secondary"
+              >
               </a>
             </div>
 
             <div class="form-group text-center mt-3">
-              <a href="{{ url_for('auth.create_account') }}" class="text-decoration-none btn btn-link text-secondary fw-bold mb-5">
+              <a
+                href="{{ url_for('auth.create_account') }}"
+                class="text-decoration-none btn btn-link text-secondary fw-bold mb-5"
+              >
                 {{ formLogin.btn_user_create.label.text }}
-            </a>              
+              </a>
             </div>
           </form>
         </div>

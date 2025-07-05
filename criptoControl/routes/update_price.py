@@ -56,7 +56,7 @@ def update_prices():
                         price_consult_datetime=timestamp
                     )
                     session.add(crypto_price)
-                    flash(f'Preço da criptomoeda {symbol} atualizado com sucesso', 'alert-success')
+                    #flash(f'Preço da criptomoeda {symbol} atualizado com sucesso', 'alert-success')
                 else:
                     flash(f'Preço da criptomoeda {symbol} veio vazio e não foi salvo.', 'alert-warning')
             else:
