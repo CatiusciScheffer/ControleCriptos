@@ -47,11 +47,21 @@ def update_prices():
             if symbol in prices:
                 price = prices[symbol]
                 timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                crypto_price = Price(price_crypto_id=crypto.crypto_id, price=price,price_consult_datetime=timestamp)
-                session.add(crypto_price)
-                flash(f'Preço da criptomoeda {symbol} atualizado com sucesso', 'alert-success')
+
+                # verifica se o preço não é None
+                if price is not None:
+                    crypto_price = Price(
+                        price_crypto_id=crypto.crypto_id,
+                        price=price,
+                        price_consult_datetime=timestamp
+                    )
+                    session.add(crypto_price)
+                    flash(f'Preço da criptomoeda {symbol} atualizado com sucesso', 'alert-success')
+                else:
+                    flash(f'Preço da criptomoeda {symbol} veio vazio e não foi salvo.', 'alert-warning')
             else:
                 flash(f'Preço para a criptomoeda {symbol} não encontrado', 'alert-warning')
+
 
         session.commit()
 
