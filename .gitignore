@@ -1,2 +1,25 @@
 .env
 anotacoes.txt
+
+__pycache__/
+
+*.py[cod]
+*$py.class
+
+# Environment specific files:
+.env
+.env.*
+.env*.local
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target
