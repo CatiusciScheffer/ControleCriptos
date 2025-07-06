@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap5
 from dotenv import load_dotenv
 import os
+from flask import render_template
 
 
 # Carregar variáveis do .env
@@ -55,3 +56,14 @@ app.register_blueprint(main_bp)
 app.register_blueprint(crypto_wallet_bp)
 app.register_blueprint(update_price_bp)
 app.register_blueprint(views_db_bp)
+
+
+
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('errors/404.html'), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('errors/500.html'), 500

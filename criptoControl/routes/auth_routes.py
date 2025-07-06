@@ -34,7 +34,7 @@ def login():
             login_user(user, remember=formLogin.remember_me.data)
             return redirect(url_for('main.index'))  # Redireciona para a rota index após o login
         else:
-            flash('Credenciais inválidas. Verifique seu email e/ou senha.', 'alert-danger')
+            flash('Credenciais inválidas. Verifique seu email e/ou senha.', 'danger')
 
     return render_template('auth/login.html', formLogin=formLogin)
 
@@ -71,7 +71,7 @@ def create_account():
         # Verificar se o e-mail já está registrado
         existing_user = User.query.filter_by(email=form.email.data).first()
         if existing_user:
-            flash('O email já está cadastrado. Tente outro.', 'alert-danger')
+            flash('O email já está cadastrado. Tente outro.', 'danger')
             return redirect(url_for('auth.create_account'))
 
         # Criar novo usuário
@@ -84,7 +84,7 @@ def create_account():
         db.session.commit()
 
         # Logar automaticamente após o cadastro
-        flash('Conta criada com sucesso! Bem-vindo!', 'alert-success')
+        flash('Conta criada com sucesso! Bem-vindo!', 'success')
         login_user(new_user)
         return redirect(url_for('main.index'))
 

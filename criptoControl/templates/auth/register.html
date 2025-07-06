@@ -10,14 +10,15 @@
   <body>
     <div class="container">
         {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} mt-3" role="alert">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category or 'info' }} mt-3" role="alert">
+                {{ message | safe }}
+              </div>
+            {% endfor %}
+          {% endif %}
         {% endwith %}
+
     </div>
     <div class="container mt-5">
       <div class="card px-4 mx-auto" style="max-width: 500px">
