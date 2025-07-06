@@ -1,53 +1,102 @@
-# **Gerenciador de Criptomoedas**  
-Este é um aplicativo de gerenciamento de criptomoedas desenvolvido com **Flask**, projetado para ajudar usuários a rastrear suas transações, saldos e carteiras. Ideal para entusiastas de cripto e traders, o sistema também inclui suporte para cálculos de taxas e integração com preços dinâmicos.  
+# ControleCriptos 📈
 
----
+*Um gerenciador de portfólio de criptomoedas, desenvolvido em Python, para acompanhar seus investimentos em tempo real.*
 
-## 🚀 **Funcionalidades**  
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### **Gerenciamento de Carteiras**  
-- Criação, edição e exclusão de carteiras.  
-- Após o login, o primeiro passo é criar uma carteira.  
-- Verifique se a moeda desejada já está cadastrada; caso contrário, cadastre-a.  
+## 📖 Sobre o Projeto
 
-### **Controle de Transações**  
-- Registre **compras**, **vendas**, **transferências** e **adições de saldo**.  
-- O sistema valida saldos automaticamente para evitar transações inválidas.  
-- Suporte para reversão de transações.  
+O **ControleCriptos** foi desenvolvido como uma ferramenta para simplificar o acompanhamento de um portfólio de criptomoedas. A aplicação consome a API da CoinMarketCap para obter cotações atualizadas e permite ao usuário registrar, visualizar, editar e deletar suas transações, calculando automaticamente o valor total investido e o saldo atual.
 
-### **Atualização de Preços**  
-- Atualize os preços das criptomoedas em tempo real por meio de uma integração dedicada.  
+## ✨ Features
 
-### **Relatórios Detalhados e Análises**  
-- Histórico completo de transações, com cálculos automáticos de taxas e totais.  
-- Ferramentas para análises de DCA (*Dollar Cost Averaging*), lucro e prejuízo.  
+- [X] **Adicionar** novas criptomoedas ao portfólio.
+- [X] **Visualizar** todas as criptos em uma tabela clara e organizada.
+- [X] **Atualizar** a quantidade ou valor investido de uma cripto existente.
+- [X] **Deletar** criptos do portfólio.
+- [X] **Cotação em Tempo Real:** Busca automática de preços via API da CoinGecko.
+- [X] **Cálculo de Saldo:** Exibe o total investido, o saldo atual e o lucro/prejuízo.
+- [X] DCA: Exibe o cálculo do DCA por criptomoeda.
 
-### **Exportação para Declaração Tributária** *(Em breve)*  
-- Em breve, será possível gerar um arquivo compatível com o site da Receita Federal do Brasil (RFB) para facilitar a **Declaração de Bens e Direitos**.  
+## 🛠️ Stack Tecnológica
 
----
+* Python 3.11
 
-## 🛠️ **Tecnologias Utilizadas**  
+- Flask
+- SQLAlchemy
+- Bootstrap
+- SQLite
+- Requests (API de preços)
 
-### **Backend**  
-- Flask  
-- SQLAlchemy  
+## 🛡️ Segurança
 
-### **Frontend**  
-- HTML  
-- CSS  
-- Bootstrap  
+- Utilização de ambiente virtual
+- Proteção básica de rotas
+- Validação de dados de entrada
 
-### **Banco de Dados**  
-- SQLite  
+## 🚀 Como Executar
 
-### **Outras Bibliotecas**  
-- Flask-WTF  
-- WTForms  
+Para executar o projeto localmente, siga os passos abaixo:
 
----
+**1. Clone o repositório:**
 
-## 🗂️ **Estrutura do Projeto**  
+```bash
+git clone https://github.com/CatiusciScheffer/ControleCriptos.git
+cd ControleCriptos
+```
+
+**2. Crie e ative um ambiente virtual (Recomendado):**
+
+```bash
+# Windows
+python -m venv venv
+.\venv\Scripts\activate
+
+# Linux / macOS
+python3 -m venv venv
+source venv/bin/activate
+```
+
+**3. Instale as dependências:**
+
+```bash
+pip install -r requirements.txt
+```
+
+**4. Execute a aplicação:**
+
+```bash
+python main.py
+```
+
+## 📷 Screenshots
+
+- Home
+
+  ![Página Entrada](screenshot/home.png "Home")
+- Transações
+
+  ![Tela de Lista das transações](screenshot/transacoes.png "Transações")
+
+  ![Tela efeturar transação](screenshot/transacao_fazer.png "Adicionar Transação")
+- Preços
+
+  ![Lista dos últimos preços consultados](screenshot/precos.png "Lista preços atuais")
+- Carteiras
+
+  ![Lista de Carteiras/Adicionar Carteira](screenshot/carteiras.png "Lista de Carteiras")
+- Moedas
+
+  ![Tela com Lista de Moedas/Cadastro de Moedas](screenshot/moedas.png "Lista de Moedas Cadastradas")
+- Saldo por Carteira/Moedas
+
+  ![Saldo das Criptomoedas por Carteira](screenshot/saldo.png "Saldo de Criptomoedas")
+- DCA
+
+  ![DCA](screenshot/dca1.png "DCA")
+
+## 🗂️ **Estrutura do Projeto**
 
 ```plaintext
 CRYPTOS_FLASK/
@@ -98,12 +147,11 @@ CRYPTOS_FLASK/
 ├── main.py  
 └── requirements.txt  
 ```
-## ⚙️ **Instalação e Execução**  
 
-1. **Clone o repositório**  
-   ```bash
-   git clone https://github.com/CatiusciScheffer/ControleCriptos
-  
 ## 📬 **Contato**
+
 E-mail: cpcscheffer@outlook.com
+
+Fone: 51 98127-9781
+
 LinkedIn: https://www.linkedin.com/in/catiuscipagnonceli-cienciasdacomputacao/

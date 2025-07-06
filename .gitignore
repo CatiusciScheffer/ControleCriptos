@@ -23,3 +23,5 @@ docs/_build/
 
 # PyBuilder
 target
+
+/screenshot
