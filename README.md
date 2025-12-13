@@ -113,7 +113,11 @@ Este repositório pode ser avaliado considerando os seguintes critérios técnic
 - Tomada de decisões sobre estrutura de dados e fluxo da aplicação
 - Adaptação de dados externos (API) para uso interno no sistema
 
-### 🚀 Evolução e Próximos Passos
+## 🚀 Evolução e Próximos Passos
+
+---
+
+
 
 - Implementação de testes automatizados
 - Criação de autenticação de usuários
