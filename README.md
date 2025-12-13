@@ -12,18 +12,13 @@
   </p>
 </div>
 
-## 🔎 Keywords
+###### 🔎 Palavras-chave
 
-python flask crypto portfolio
-cryptocurrency portfolio tracker
-python web application
-financial dashboard
-investment tracker
-crypto investment management
-flask backend project
-fullstack python project
-api integration python
-sqlite sqlalchemy flask
+Python · Gerenciamento de Portfólio de Criptoativos · Financial Tracking · Backend · APIs Financeiras · Integração de Dados · Análise de Dados · Investimentos · Monitoramento de Ativos · Bancos de Dados (SQL/NoSQL)
+
+###### 📍 Tags do Repositório (Para Pesquisa GitHub)
+
+python cryptocurrency portfolio-management financial-tracking backend api-integration data-analysis investments sql criptoativos
 
 ## 📌 Sumário
 
@@ -58,7 +53,7 @@ Este projeto demonstra **experiência prática em desenvolvimento backend e full
 
 O foco está na **construção de uma aplicação real**, com regras de negócio, integração com APIs externas e organização de código voltada à manutenibilidade e escalabilidade.
 
-### 🧪 Como este projeto pode ser avaliado por recrutadores
+## 🧪 Como este projeto pode ser avaliado por recrutadores
 
 Este repositório pode ser avaliado considerando os seguintes critérios técnicos e de engenharia de software:
 
