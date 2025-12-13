@@ -125,14 +125,14 @@ Este repositório pode ser avaliado considerando os seguintes critérios técnic
 - Deploy da aplicação em ambiente de produção
 - Melhoria na visualização dos dados (gráficos e dashboards)
 
-## 🛠️ Stack Tecnológica
+## 🛠️  Tecnológicas e Ferramentas utilizadas
 
-- Python 3.11
-- Flask
-- SQLAlchemy
-- Bootstrap
-- SQLite
-- Requests (API de preços)
+- **Python 3.11**
+- **Flask** — framework web backend
+- **SQLAlchemy** — ORM para acesso ao banco de dados
+- **SQLite** — banco de dados relacional
+- **Bootstrap** — estilização e layout responsivo
+- **Requests** — consumo de APIs externas
 
 ## 🛡️ Segurança
 
@@ -175,7 +175,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## 📷 Screenshots
+## 📷 Imagens
 
 - Home
 
