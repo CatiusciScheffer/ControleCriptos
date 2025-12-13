@@ -99,7 +99,7 @@ Este repositório pode ser avaliado considerando os seguintes critérios técnic
 - Gerenciamento de dependências e ambiente virtual com **venv**
 - Tratamento básico de erros e validações de dados
 
-### 🧱 Boas Práticas de Engenharia de Software
+## 🧱 Boas Práticas de Engenharia de Software
 
 - Separação de responsabilidades entre **rotas, modelos e lógica de negócio**
 - Organização do projeto visando **facilidade de manutenção**
@@ -107,17 +107,13 @@ Este repositório pode ser avaliado considerando os seguintes critérios técnic
 - Uso de **Git e GitHub** para versionamento
 - Documentação clara para facilitar entendimento e colaboração
 
-### 🧩 Capacidade de Análise e Resolução de Problemas
+## 🧩 Capacidade de Análise e Resolução de Problemas
 
 - Tradução de um problema real (controle de investimentos em criptomoedas) em uma solução técnica
 - Tomada de decisões sobre estrutura de dados e fluxo da aplicação
 - Adaptação de dados externos (API) para uso interno no sistema
 
 ## 🚀 Evolução e Próximos Passos
-
----
-
-
 
 - Implementação de testes automatizados
 - Criação de autenticação de usuários
