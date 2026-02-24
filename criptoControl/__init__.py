@@ -9,7 +9,11 @@ from flask import render_template
 
 
 # Carregar variáveis do .env
-load_dotenv()
+#load_dotenv()
+
+# Define o caminho para a raiz do seu projeto (onde está o .env)
+env_path = Path(__file__).resolve().parent.parent / '.env'
+load_dotenv(dotenv_path=env_path)
 
 app = Flask(__name__)
 

@@ -7,7 +7,10 @@ from dotenv import load_dotenv
 import os
 import logging
 
-load_dotenv()
+# Define o caminho para a raiz do seu projeto (onde está o .env)
+env_path = Path(__file__).resolve().parent.parent / '.env'
+load_dotenv(dotenv_path=env_path)
+#load_dotenv()
 
 update_price_bp = Blueprint('update_price', __name__)
 
