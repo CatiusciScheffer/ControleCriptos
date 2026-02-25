@@ -3,7 +3,11 @@
   <p>Um gerenciador pessoal de criptomoedas para acompanhar carteira, transações e valor de mercado em tempo real.</p>
   <p>
     <!-- Badges -->
-    <a href="https://github.com/CatiusciScheffer/ControleCriptos/stargazers">
+    <a href="https://catiusci.pythonanywhere.com/">
+  <img src="https://img.shields.io/badge/Demo-Online-success?style=for-the-badge" alt="Demo Online">
+</a>
+<br>
+<a href="https://github.com/CatiusciScheffer/ControleCriptos/stargazers">
       <img src="https://img.shields.io/github/stars/CatiusciScheffer/ControleCriptos.svg?style=social" alt="Stars">
     </a>
     <img src="https://img.shields.io/github/license/CatiusciScheffer/ControleCriptos.svg" alt="License">
