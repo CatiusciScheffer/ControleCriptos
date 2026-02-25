@@ -139,6 +139,14 @@ Este repositório pode ser avaliado considerando os seguintes critérios técnic
 - Estrutura preparada para proteção de rotas e autenticação
 - Validação de dados de entrada
 
+## 🌐 Aplicação em Produção
+
+A aplicação está hospedada e pode ser acessada em:
+
+🔗 https://catiusci.pythonanywhere.com/
+
+Deploy realizado na plataforma PythonAnywhere.
+
 ## 🚀 Como Executar
 
 Para executar o projeto localmente, siga os passos abaixo:
@@ -259,3 +267,5 @@ E-mail: cpcscheffer@outlook.com
 Fone: 51 98127-9781
 
 LinkedIn: https://www.linkedin.com/in/catiuscipagnonceli-cienciasdacomputacao/
+
+🌐 Aplicação em Produção: 🔗 https://catiusci.pythonanywhere.com/
