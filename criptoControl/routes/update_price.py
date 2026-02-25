@@ -4,6 +4,7 @@ from criptoControl.api import get_crypto_payment_price
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
+from pathlib import Path
 import os
 import logging
 

@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap5
 from dotenv import load_dotenv
+from pathlib import Path
 import os
 from flask import render_template
 
